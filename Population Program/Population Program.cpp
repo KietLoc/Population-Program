@@ -73,11 +73,11 @@ int main()
         double diff = population - floor(population);
         if (diff < 0.50)
         {
-            cout << setw(3) << day << ":   " << fixed << setprecision(0) << floor(population) << endl;
+            cout << setw(3) << day << ":   " << fixed << setprecision(0) << floor(population) << endl; //Round Down
         }
         else if (diff >= 0.50)
         {
-            cout << setw(3) << day << ":   " << fixed << setprecision(0) << ceil(population) << endl;
+            cout << setw(3) << day << ":   " << fixed << setprecision(0) << ceil(population) << endl; //Round Up
         }
         else
         {
