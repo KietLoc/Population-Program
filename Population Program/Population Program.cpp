@@ -62,16 +62,28 @@ int main()
     double population = start; 
     double rate = dailyIncreasePercent / 100.0; 
 
-    cout << fixed << setprecision(0) << "\nDay\tPopulation\n"; //Logically rounded to per person instead of parts of a person
+    cout << fixed << setprecision(2) << "\nDay\tPopulation\n"; //Logically rounded to per person instead of parts of a person
     cout << "-------------------------\n";
     for (int day = 1; day <= days; ++day) //Loop until number of days reached
     {
         if (day > 1) 
         {
-            population *= (1.0 + rate); //Calculation for population changes
-            population = ceil(population); //Makes sure the results round up not down
+            population *= (1.0 + rate); //Calculation for population changes  
         }
-        cout << setw(3) << day << ":   " << population << endl;
+        double diff = population - floor(population);
+        if (diff < 0.50)
+        {
+            cout << setw(3) << day << ":   " << fixed << setprecision(0) << floor(population) << endl;
+        }
+        else if (diff >= 0.50)
+        {
+            cout << setw(3) << day << ":   " << fixed << setprecision(0) << ceil(population) << endl;
+        }
+        else
+        {
+            return 1;
+        }
+        
     }
 
     return 0;
